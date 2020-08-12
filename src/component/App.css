@@ -1,0 +1,136 @@
+html,body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .jumbotron {
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    color : lavender;
+    margin-top: 10px;
+  }
+  
+  .container-header {
+    padding-right: 0;
+  }
+
+  .container-search {
+    padding-right: 0;
+  }
+  
+  .row {
+    margin-bottom: 20px;
+  }
+  
+  .col-film-info {
+    background-color: whitesmoke;
+    border-radius: 10px;
+  }
+  
+  .col-sm-4 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .col-sm-8 #film {
+    font-size: 40px;
+    font-family: 'McLaren', cursive;
+    margin-top: 15px;
+    margin-left: 10px;
+    color: mediumslateblue;
+  }
+  
+  .col-sm-8 #film_release_date {
+    font-family: 'Kosugi', sans-serif;
+    font-size: 25px;
+    margin-left: 10px;
+    color: mediumslateblue;
+  }
+  
+  .col-sm-8 #film_rating {
+    font-family: 'Kosugi', sans-serif;
+    font-size: 25px;
+    margin-left: 12px;
+    margin-top: 15px;
+    color: lightsalmon;
+  }
+  
+  .row img {
+  opacity: 1;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  }
+  .row:hover img {
+  opacity: .7;
+  transform: scale(1.02);
+  }
+  
+  
+  
+  @media (max-width: 576px) {
+  
+    .jumbotron {
+      margin-top: 0;
+    }
+    .container-header {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    #deskripsi {
+        font-size: 40px;
+    }
+  
+    .col-film-info {
+      background-color: white;
+      border-radius: 0;
+    }
+  
+    .col-sm-8 {
+        text-align: center;
+    }
+  
+    .col-sm-4 img {
+        max-width: 85%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        justify-self: center;
+        display: block;
+    }
+  
+    .row {
+        margin-bottom: 50px;
+    }
+  
+    .col-sm-8 #film {
+        font-size: 20px;
+        font-family: 'McLaren', cursive;
+    }
+  
+    .col-sm-8 #film_release_date {
+      font-family: 'Kosugi', sans-serif;
+      font-size: 15px;
+  }
+    
+    .col-sm-8 #film_rating {
+        font-family: 'Kosugi', sans-serif;
+        font-size: 15px;
+    }
+    
+  }
+
+  .input-group {
+      margin-bottom: 35px;
+  }
+
+  .input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+
+  .input-group.md-form.form-sm.form-2 input.lime-border {
+    border: 1px solid lightblue;
+  }
