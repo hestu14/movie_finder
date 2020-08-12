@@ -77,6 +77,10 @@ html,body {
       padding-left: 0;
       padding-right: 0;
     }
+
+    .container-search {
+      padding-right: 15px;
+    }
   
     #deskripsi {
         font-size: 40px;
