@@ -69,7 +69,15 @@ class App extends Component {
     const data_kolom = this.state.DataMovies.map((item, index) => {
 
       var id_title = item.title;
-      var id_release_date = item.release_date.slice(0, 4);
+      var id_release_date = '';
+      
+      if (item.release_date === undefined || item.release_date === '') {
+        id_release_date = ''
+      } else {
+        id_release_date = '(' + item.release_date.slice(0, 4) + ')'
+      };
+
+
       var id_film_rating = item.vote_average;
       var id_film_rating_count = item.vote_count;
       var url_default = "https://www.themoviedb.org/movie/";
@@ -83,7 +91,7 @@ class App extends Component {
         img_poster = 'https://dummyimage.com/500x750/000/fff.jpg&text=No+Poster+Image'
       } else {
         img_poster = img_default + item.poster_path
-      }
+      };
 
 
       return <div className="row" key={index}>
@@ -92,7 +100,7 @@ class App extends Component {
         </div>
         <div className="col-sm-8 col-film-info">
           <div id="film"> {id_title} </div>
-          <div id="film_release_date"> ({id_release_date}) </div>
+          <div id="film_release_date"> {id_release_date} </div>
           <div id="film_rating"> Rating: {id_film_rating} ({id_film_rating_count} users vote) </div>
         </div>
       </div>;
@@ -104,7 +112,7 @@ class App extends Component {
           <div className="jumbotron jumbotron-fluid">
             <div className="container">
               <h1 className="display-4"><span id="deskripsi" /> Simple Movie Finder </h1>
-              <p className="lead" id="deskripsi_header"> Create by hestu14
+              <p className="lead" id="deskripsi_header"> Create by <a href="https://github.com/hestu14" target="_blank" rel="noopener noreferrer">hestu14</a>
               </p>
             </div>
           </div>
