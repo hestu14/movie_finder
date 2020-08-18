@@ -13,9 +13,11 @@ class App extends Component {
     this.state = {
       Search_keyword: "",
       DataMovies: [],
+      Search_type: "movie",
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
 
   }
@@ -24,9 +26,11 @@ class App extends Component {
 
   find_movies() {
     let query_search = this.state.Search_keyword;
+    let query_type = this.state.Search_type;
     console.log(query_search);
+    console.log(query_type);
 
-    axios.get('https://api.themoviedb.org/3/search/movie?api_key=' + process.env.DB_API_KEY + '&query=' + query_search + '&page=1', {
+    axios.get('https://api.themoviedb.org/3/search/' + query_type + '?api_key=' + process.env.DB_API_KEY + '&query=' + query_search + '&page=1', {
       "async": true,
       "crossDomain": true,
       "method": "GET",
@@ -53,8 +57,12 @@ class App extends Component {
     this.find_movies();
   }
 
-  handleChange(event) {
+  handleChange1(event) {
     this.setState({ Search_keyword: event.target.value });
+  }
+
+  handleChange2(event) {
+    this.setState({ Search_type: event.target.value });
   }
 
   handleKeyDown(event) {
@@ -65,12 +73,17 @@ class App extends Component {
 
 
   render() {
-
     const data_kolom = this.state.DataMovies.map((item, index) => {
 
-      var id_title = item.title;
+      var id_title = '';
+      if (item.title === undefined) {
+        id_title  = item.name
+      } else {
+        id_title  = item.title
+      };
+
       var id_release_date = '';
-      
+
       if (item.release_date === undefined || item.release_date === '') {
         id_release_date = ''
       } else {
@@ -82,6 +95,7 @@ class App extends Component {
       var id_film_rating_count = item.vote_count;
       var url_default = "https://www.themoviedb.org/movie/";
       var id_url_movies = item.id;
+      var id_film_overview =item.overview;
 
 
       var img_default = "https://image.tmdb.org/t/p/w500/";
@@ -102,6 +116,7 @@ class App extends Component {
           <div id="film"> {id_title} </div>
           <div id="film_release_date"> {id_release_date} </div>
           <div id="film_rating"> Rating: {id_film_rating} ({id_film_rating_count} users vote) </div>
+          <div id="film_overview"> {id_film_overview}</div>
         </div>
       </div>;
     })
@@ -122,7 +137,7 @@ class App extends Component {
           <div className="input-group md-form form-sm form-2 pl-0">
             <input className="form-control my-0 py-1 lime-border" type="search" placeholder="Tekan Enter untuk mencari"
               value={this.state.Search_keyword}
-              onChange={this.handleChange}
+              onChange={this.handleChange1}
               onKeyDown={this.handleKeyDown}
             />
             {/* <div className="input-group-append">
@@ -131,9 +146,19 @@ class App extends Component {
           </div>
         </div>
 
+        <form >
+            <div className="form-group container">
+              <select className="form-control" id="exampleFormControlSelect1" value={this.state.Search_type} onChange={this.handleChange2}>
+                <option value="movie">Movies</option>
+                <option value="tv">TV Series</option>
+              </select>
+            </div>
+          </form>
+
         <div className="container">
           {data_kolom}
         </div>
+
         <footer id="sticky-footer" className="py-4 bg-light text-white-50">
           <div className="container text-center">
             <small>Sponsored by : <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">

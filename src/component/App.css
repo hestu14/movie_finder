@@ -20,9 +20,16 @@ html,body {
   }
 
   .container-search {
+    margin-top: -15px;
     padding-right: 0;
   }
-  
+
+  .form-group {
+    padding-right: 0;
+    margin-top: -15px ;
+    margin-bottom: 35px;
+  }
+
   .row {
     margin-bottom: 20px;
   }
@@ -60,6 +67,16 @@ html,body {
     margin-top: 15px;
     color: lightsalmon;
   }
+
+  .col-sm-8 #film_overview {
+    font-family: 'Kosugi', sans-serif;
+    font-size: 16px;
+    margin-left: 12px;
+    margin-top: 15px;
+    margin-right: 25px;
+    color: crimson;
+    text-align: justify;
+  }
   
   .row img {
   opacity: 1;
@@ -84,6 +101,10 @@ html,body {
     }
 
     .container-search {
+      padding-right: 15px;
+    }
+
+    .form-group {
       padding-right: 15px;
     }
   
@@ -114,8 +135,8 @@ html,body {
     }
   
     .col-sm-8 #film {
-        font-size: 20px;
-        font-family: 'McLaren', cursive;
+      font-size: 20px;
+      font-family: 'McLaren', cursive;
     }
   
     .col-sm-8 #film_release_date {
@@ -124,10 +145,20 @@ html,body {
   }
     
     .col-sm-8 #film_rating {
-        font-family: 'Kosugi', sans-serif;
-        font-size: 15px;
+      font-family: 'Kosugi', sans-serif;
+      font-size: 15px;
+      margin-top: 5px;
     }
     
+    .col-sm-8 #film_overview {
+      font-family: 'Kosugi', sans-serif;
+      font-size: 12px;
+      margin-left: 12px;
+      margin-top: 5px;
+      margin-right: 12px;
+      text-align: justify;
+    }
+
   }
 
   .input-group {
