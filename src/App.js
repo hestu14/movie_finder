@@ -101,7 +101,8 @@ class App extends Component {
 
       var id_film_rating = item.vote_average;
       var id_film_rating_count = item.vote_count;
-      var url_default = "https://www.themoviedb.org/movie/";
+      var url_default = "https://www.themoviedb.org/";
+      var url_type = this.state.Search_type + "/";
       var id_url_movies = item.id;
       var id_film_overview = item.overview;
 
@@ -118,7 +119,7 @@ class App extends Component {
 
       return <div className="row" key={index}>
         <div className="col-sm-4">
-          <div id="film_img" /> <img src={img_poster} alt="film_poster" onClick={() => window.open(url_default + id_url_movies, "_blank")}></img>
+          <div id="film_img" /> <img src={img_poster} alt="film_poster" onClick={() => window.open(url_default + url_type + id_url_movies, "_blank")}></img>
         </div>
         <div className="col-sm-8 col-film-info">
           <div id="film"> {id_title} </div>
