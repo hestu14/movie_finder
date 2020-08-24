@@ -19,6 +19,8 @@ class App extends Component {
     this.handleChange1 = this.handleChange1.bind(this);
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    
 
   }
 
@@ -71,15 +73,21 @@ class App extends Component {
     }
   }
 
+  handleClick = () => { 
+    console.log('this is:', this);
+    // this.setState({ Search_keyword: this.Search_keyword });
+    this.find_movies()
+   }
+
 
   render() {
     const data_kolom = this.state.DataMovies.map((item, index) => {
 
       var id_title = '';
       if (item.title === undefined) {
-        id_title  = item.name
+        id_title = item.name
       } else {
-        id_title  = item.title
+        id_title = item.title
       };
 
       var id_release_date = '';
@@ -95,7 +103,7 @@ class App extends Component {
       var id_film_rating_count = item.vote_count;
       var url_default = "https://www.themoviedb.org/movie/";
       var id_url_movies = item.id;
-      var id_film_overview =item.overview;
+      var id_film_overview = item.overview;
 
 
       var img_default = "https://image.tmdb.org/t/p/w500/";
@@ -121,6 +129,8 @@ class App extends Component {
       </div>;
     })
 
+
+
     return (
       <div>
         <div className="container container-header">
@@ -138,22 +148,26 @@ class App extends Component {
             <input className="form-control my-0 py-1 lime-border" type="search" placeholder="Tekan Enter untuk mencari"
               value={this.state.Search_keyword}
               onChange={this.handleChange1}
-              onKeyDown={this.handleKeyDown}
-            />
-            {/* <div className="input-group-append">
-              <span className="input-group-text lime lighten-2"  id="basic-text1"><i className="fa fa-search text-grey" aria-hidden="true" /></span>
-            </div> */}
+              onKeyDown={this.handleKeyDown} >
+            </input>
+
+            <div className="input-group-append">
+              <span className="input-group-text lime lighten-2" id="basic-text1"><i className="fa fa-search text-grey" aria-hidden="true"
+                onClick={this.handleClick}
+              /></span>
+            </div>
           </div>
+
         </div>
 
         <form >
-            <div className="form-group container">
-              <select className="form-control" id="exampleFormControlSelect1" value={this.state.Search_type} onChange={this.handleChange2}>
-                <option value="movie">Movies</option>
-                <option value="tv">TV Series</option>
-              </select>
-            </div>
-          </form>
+          <div className="form-group container">
+            <select className="form-control" id="exampleFormControlSelect1" value={this.state.Search_type} onChange={this.handleChange2}>
+              <option value="movie">Movies</option>
+              <option value="tv">TV Series</option>
+            </select>
+          </div>
+        </form>
 
         <div className="container">
           {data_kolom}
